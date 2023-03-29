@@ -1,3 +1,6 @@
+/**
+ * Simple HTTP Client intended as a wrapper around
+ */
 import { Axios } from "axios";
 
 export interface IHTTPClientResults<T> {
@@ -12,6 +15,11 @@ export class HTTPClient {
     this.baseURI = baseURI;
     this.axios = axiosClient;
   }
+  /**
+   * Combines basePath and urlPath to for URL
+   * @param urlPath String path (without host)
+   * @returns
+   */
   async get<T>(urlPath: string): Promise<IHTTPClientResults<T>> {
     const response = await this.axios.get(`${this.baseURI}${urlPath}`);
     return {
@@ -20,6 +28,11 @@ export class HTTPClient {
     };
   }
 
+  /**
+   * Sends a request to the RAW provided URL.
+   * @param urlPath String path (with host)
+   * @returns
+   */
   async getURL<T>(urlPath: string): Promise<IHTTPClientResults<T>> {
     const response = await this.axios.get(urlPath);
     return {

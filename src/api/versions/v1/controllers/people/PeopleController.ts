@@ -24,6 +24,9 @@ export class PeopleController extends BaseController<IPeople> {
     this.routes();
   }
 
+  /**
+   * Sets up subroutes
+   */
   routes() {
     this.app.get(`${this.basePath}`, this.all.bind(this));
     this.app.get<PeopleRequestGeneric>(
@@ -41,6 +44,10 @@ export class PeopleController extends BaseController<IPeople> {
     req: FastifyRequest<PeopleRequestGeneric>,
     res: FastifyReply
   ) {
+    /**
+     * Find the person, then retrieve data for each of the
+     * persons starships
+     */
     const name = req.params.name;
     const personResults = await this.swapi.people.byName(name);
     const person = personResults.results[0];

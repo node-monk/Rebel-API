@@ -13,6 +13,9 @@ export class StarshipsController extends BaseController<IStarship> {
     this.routes();
   }
 
+  /**
+   * Sets up subroutes
+   */
   routes() {
     this.app.get(`${this.basePath}`, this.all.bind(this));
   }

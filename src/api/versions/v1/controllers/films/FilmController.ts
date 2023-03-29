@@ -24,6 +24,9 @@ export class FilmController extends BaseController<IFilm> {
     this.routes();
   }
 
+  /**
+   * Sets up subroutes
+   */
   routes() {
     this.app.get(`${this.basePath}`, this.all.bind(this));
     this.app.get<FilmRequestGeneric>(
@@ -39,7 +42,12 @@ export class FilmController extends BaseController<IFilm> {
 
   async species(req: FastifyRequest<FilmRequestGeneric>, res: FastifyReply) {
     const episodeNumber = Number(req.params.episode) - 1;
-
+    /**
+     * Users are more likely to know the Episode number instead
+     * of the Name. Creating a simple Mapping here to
+     * map Episode Numbers provided in the URL to Real Names
+     * that can be searched in the Swapi API
+     */
     const episodesMap = [
       "The Phantom Menace",
       "Attack of the Clones",
@@ -54,6 +62,9 @@ export class FilmController extends BaseController<IFilm> {
       return res.status(404).send();
     }
 
+    /**
+     * find the episode, then retrieve data for each species
+     */
     const filmResults = await this.swapi.films.byName(episode);
     const film = filmResults.results[0];
     if (film == null) {

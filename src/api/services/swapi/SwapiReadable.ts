@@ -1,3 +1,8 @@
+/**
+ * A Readable Stream what Streams pages of
+ * data from SWAPI API.
+ */
+
 import { Readable, ReadableOptions } from "stream";
 import { HTTPClient } from "../../common/httpClient/HttpClient";
 import { ISwapiResultsResponse } from "./models/ISwapiResultsResponse";

@@ -29,6 +29,11 @@ export class RebelAPI {
   }
 
   setupAPIRoutes() {
+    /**
+     * Marry each routes with its respective Controllers. Each
+     * Constroller then adds its own subroutes as its
+     * instantiated
+     */
     new this.controllers.Films(
       `${this.basePath}/episodes`,
       this.app,

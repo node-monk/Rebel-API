@@ -15,6 +15,9 @@ export class PlanetController extends BaseController<IPlanet> {
     this.routes();
   }
 
+  /**
+   * Sets up sub routes
+   */
   routes() {
     this.app.get(`${this.basePath}`, this.all.bind(this));
     this.app.get(
@@ -28,6 +31,13 @@ export class PlanetController extends BaseController<IPlanet> {
     res.send(records.results);
   }
 
+  /**
+   * Attaches to the Readable Stream returned fro the SWAPI service and
+   * sums the population totals
+   * @param req
+   * @param res
+   * @returns
+   */
   async totalPopulation(req: FastifyRequest, res: FastifyReply) {
     const planetReadableStream = this.swapi.planets.readableStream<IPlanet>();
     let total = 0;

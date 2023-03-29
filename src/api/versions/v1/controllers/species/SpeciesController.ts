@@ -13,6 +13,9 @@ export class SpeciesController extends BaseController<ISpecies> {
     this.routes();
   }
 
+  /**
+   * Sets up subroutes
+   */
   routes() {
     this.app.get(`${this.basePath}`, this.all.bind(this));
   }
