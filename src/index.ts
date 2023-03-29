@@ -37,6 +37,9 @@ try {
     port: Number(API_PORT),
   };
   app.listen(appOptions);
+  consola.info(
+    `Access the Rebel API by going to http://localhost:${API_PORT}/api/v1/people`
+  );
 } catch (err) {
   consola.error(err);
 }
