@@ -12,7 +12,7 @@ import { SwapiData } from "./data/MockData";
 const axiosMock = new AxiosMockAdapter(axios);
 
 const FAKE_SWAPI_URI = "http://fakeuri";
-const API_PORT = 4444;
+const API_PORT = 4646;
 const API_HOST = `http://localhost:${API_PORT}`;
 const API_BASE_PATH = `/api/v1`;
 const API_URI = API_BASE_PATH;
