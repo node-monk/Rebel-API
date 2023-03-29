@@ -33,7 +33,7 @@ describe("FilmModel", () => {
 
     it("should call httpClient.get with the correct search path and return the records", async () => {
       const result = await filmModel.byName("Search Term");
-      expect(httpClient.get).toHaveBeenCalledWith(`/films?search=Search Term`);
+      expect(httpClient.get).toHaveBeenCalledWith(`/films/?search=Search Term`);
     });
   });
 });

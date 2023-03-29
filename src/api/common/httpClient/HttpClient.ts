@@ -13,7 +13,6 @@ export class HTTPClient {
     this.axios = axiosClient;
   }
   async get<T>(urlPath: string): Promise<IHTTPClientResults<T>> {
-    console.log({ urlPath });
     const response = await this.axios.get(`${this.baseURI}${urlPath}`);
     return {
       statusCode: response.status,
@@ -22,8 +21,6 @@ export class HTTPClient {
   }
 
   async getURL<T>(urlPath: string): Promise<IHTTPClientResults<T>> {
-    console.log({ urlPath });
-
     const response = await this.axios.get(urlPath);
     return {
       statusCode: response.status,

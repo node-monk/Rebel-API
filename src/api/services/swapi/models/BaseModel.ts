@@ -1,6 +1,8 @@
 import { ISwapiResultsResponse } from "./ISwapiResultsResponse";
 import { HTTPClient } from "../../../common/httpClient/HttpClient";
 import { Readable } from "stream";
+import { SwapiReadable } from "../SwapiReadable";
+import { read } from "fs";
 
 export class BaseModel<T> {
   basePath: string;
@@ -27,11 +29,12 @@ export class BaseModel<T> {
     return batchData;
   }
 
-  // streamAllRecords(): ReadableStream {
-  //   const readStream = new Readable({
-  //     _read(size)
-  //   })
-  //   readStream.push()
-
-  // }
+  readableStream<T>(): SwapiReadable<T> {
+    const reader = new SwapiReadable(
+      { objectMode: true },
+      `${this.httpClient.baseURI}/${this.basePath}`,
+      this.httpClient
+    );
+    return reader;
+  }
 }

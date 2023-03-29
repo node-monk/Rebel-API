@@ -33,7 +33,9 @@ describe("People Modal", () => {
 
     it("should call httpClient.get with the correct search path and return the records", async () => {
       const result = await peopleModal.byName("Search Term");
-      expect(httpClient.get).toHaveBeenCalledWith(`/people?search=Search Term`);
+      expect(httpClient.get).toHaveBeenCalledWith(
+        `/people/?search=Search Term`
+      );
     });
   });
 });

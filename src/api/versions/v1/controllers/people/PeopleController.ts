@@ -43,15 +43,12 @@ export class PeopleController extends BaseController<IPeople> {
   ) {
     const name = req.params.name;
     const personResults = await this.swapi.people.byName(name);
-    console.log({ personResults });
     const person = personResults.results[0];
-    console.log({ person });
 
     if (person == null) {
       return res.status(404).send();
     }
     const starships = await this.swapi.starships.batch(person.starships);
-    console.log({ starships });
     res.send(starships);
   }
 }

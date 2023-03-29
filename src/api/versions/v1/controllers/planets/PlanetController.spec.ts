@@ -100,4 +100,8 @@ describe("PlanetController", () => {
       expect(mockFastifyReply.send).toHaveBeenCalledWith(mockPlanetListing);
     });
   });
+
+  describe("readableStream", () => {
+    it("should return return readable Stream", async () => {});
+  });
 });
